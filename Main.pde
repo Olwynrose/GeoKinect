@@ -1,17 +1,14 @@
-import KinectPV2.*;
-KinectPV2 kinect;
-
 void setup() {
-  size(512,424);
+  size(1280,720);
   
-  kinect = new KinectPV2(this);
-  kinect.enableColorImg(true);
-  kinect.enableDepthImg(true);
-  kinect.init();
+  initColorMap();
 }
 
-
 void draw(){
- PImage imgC = kinect.getDepthImage();
- image(imgC, 0, 0);
+ for(int i = 0; i < width; i++){
+   // Set shape color based on colormap
+   stroke(colorMap(float(i)/float(width)));
+   // Vertical colored line tracing
+   line(i, 0, i, height);
+ }
 }
